@@ -101,7 +101,9 @@
           nombreMinLength : 5,
           nombreMaxLength : 15,
           edadMin: 18,
-          edadMax: 120
+          edadMax: 120,
+          url: 'https://62ace499402135c7acba66cc.mockapi.io/usuarios',
+          usuarios: []
         }
       },
       computed: {
@@ -120,9 +122,27 @@
         },
         enviar() {
           console.log({...this.datos})
+          this.postUsuario() 
           this.datos = this.getInicialData()
           this.formState._reset()  
-        }
+        },
+        async postUsuario() {
+          let usuarioNew = {
+            nombre: this.datos.nombreCompleto,//this.nombreCompleto,
+            edad: this.datos.edad,
+            email: this.datos.email
+          }
+          console.log(usuarioNew)
+
+          try {
+            let { data: usuario } = await this.axios.post(this.url, usuarioNew, {'content-type' : 'application/json'})
+            console.log('AXIOS POST usuario', usuario)
+            this.usuarios.push(usuario)
+          }
+          catch(error) {
+            console.error('Error en postUsuario()', error.message)
+          }
+      },
       }
     }
 </script>

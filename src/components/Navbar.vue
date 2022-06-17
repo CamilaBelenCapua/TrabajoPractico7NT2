@@ -19,6 +19,13 @@
             </router-link>
           </li>
 
+          <!-- Ruta al componente Usuario -->
+          <li class="nav-item">
+            <router-link to="/Usuarios">
+              <a class="nav-link" href="#">Usuarios</a>
+            </router-link>
+          </li>
+
         </ul>
       </div>
     </nav>
