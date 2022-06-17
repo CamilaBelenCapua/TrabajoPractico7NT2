@@ -10,4 +10,4 @@ var options = {
     }
 }
 
-Vue.use(VueForm, opto)
+Vue.use(VueForm, options)
